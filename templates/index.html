@@ -126,7 +126,7 @@
         const roomId = "{{ room.name }}";
         const username = "{{ request.user.username }}";
         const chatSocket = new WebSocket(
-            'ws://' + "localhost:8001" + '/ws/chat/' + roomId + '/'
+            'ws://' + "172.16.12.15:8001" + '/ws/chat/' + roomId + '/'
         );
 
         chatSocket.onmessage = function(e) {
@@ -140,6 +140,11 @@
 				messageElement.classList.add('message-right');
 				messageElement.style.textAlign = 'right';
 				messageElement.style.background = 'green';
+			}
+            else {
+				messageElement.classList.add('message-left');
+				messageElement.style.textAlign = 'left';
+				messageElement.style.background = 'red';
 			}
 			messageElement.innerText = `${data.username}: ${data.message}`;
 
